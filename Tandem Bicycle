@@ -1,0 +1,47 @@
+import java.util.*;
+class HelloWorld {
+    
+    public static void reverse(int[] arr){
+        int start = 0;
+        int end = arr.length - 1;
+        while(start < end){
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start += 1;
+            end -= 1;
+        }
+    }
+    
+    public static int roadMap(int[] red, int[] blue){
+      Arrays.sort(red);
+      Arrays.sort(blue);
+      int n = red.length;
+      if(false){
+          reverse(red);
+      }
+      int total = 0;
+      for(int i=0;i<n;i++){
+          int r1 = red[i];
+          int r2 = blue[n-i-1];
+          total += Math.max(r1, r2);
+      }
+      return total;
+    }
+    
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] red = new int[n];
+        int[] blue = new int[n];
+        for(int i=0;i<n;i++){
+            red[i] = sc.nextInt();
+        }
+         for(int i=0;i<n;i++){
+            blue[i] = sc.nextInt();
+        }
+        //String S = sc.next();
+        System.out.println(roadMap(red, blue));
+    }
+}
